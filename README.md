@@ -13,7 +13,7 @@
 </p>
 
 ---
-# FanCardShop — Final Embedded Edition (Full-resolution)
+# FanCardShop — 
 
 This repository is a demo-ready static site for FanCardShop. After running the included download script, the site will contain full-resolution celebrity images embedded locally and a created 1920x600 header banner.
 
