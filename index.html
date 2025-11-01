@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FanCardShop</title>
+<link rel="stylesheet" href="css/style.css"/>
+<script defer src="js/qrcode.js"></script>
+<script defer src="js/admin.js"></script>
+<script defer src="js/main.js"></script>
+</head>
+<body>
+<header class="hero">
+  <div class="banner-grid" role="img" aria-label="FanCardShop premium collage">
+    <img class="banner-img" src="assets/images/banner/banner.jpg" alt="FanCardShop Banner (1920x600)">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>FanCardShop</h1>
+      <p>Collect. Connect. Celebrate.</p>
+    </div>
+  </div>
+</header>
+
+<div class="theme-toggle"><button id="themeButton">🌙 Toggle Theme</button></div>
+
+<main class="gallery" id="fanGallery"></main>
+
+<section id="adminToolsSection" class="hidden">
+  <h2>Admin Tools ▾</h2>
+  <div id="adminPanel" class="hidden">
+    <input type="file" id="cardImage" accept="image/*">
+    <input type="text" id="cardName" placeholder="Enter Celebrity Name">
+    <input type="text" id="cardDesc" placeholder="Enter Description">
+    <button id="addCardBtn">Add Fan Card</button>
+    <button id="generateQRBtn">Generate QR Code</button>
+    <div id="qrCodeOutput"></div>
+  </div>
+</section>
+
+<div id="adminLoginPrompt"><button id="showAdminBtn">Admin Tools ▾</button></div>
+
+<script>
+const starterCards = [
+  {name: "Beyoncé", filename: "Beyonce.jpg", wikifile: "https://commons.wikimedia.org/wiki/File:Beyonce.jpg"},
+  {name: "Lionel Messi", filename: "Lionel_Messi_31mar2007.jpg", wikifile: "https://commons.wikimedia.org/wiki/File:Lionel_Messi_31mar2007.jpg"},
+  {name: "Zendaya", filename: "Zendaya_-_2019_by_Glenn_Francis.jpg", wikifile: "https://commons.wikimedia.org/wiki/File:Zendaya_-_2019_by_Glenn_Francis.jpg"},
+  {name: "BTS", filename: "BTS_during_a_White_House_press_conference_May_31%2C_2022_(cropped).jpg", wikifile: "https://commons.wikimedia.org/wiki/File:BTS_during_a_White_House_press_conference_May_31%2C_2022_(cropped).jpg"},
+  {name: "Elon Musk", filename: "Elon_Musk_2015.jpg", wikifile: "https://commons.wikimedia.org/wiki/File:Elon_Musk_2015.jpg"},
+  {name: "Taylor Swift", filename: "Taylor_Swift_%286966830273%29.jpg", wikifile: "https://commons.wikimedia.org/wiki/File:Taylor_Swift_%286966830273%29.jpg"},
+  {name: "Cristiano Ronaldo", filename: "Cristiano_Ronaldo.jpg", wikifile: "https://commons.wikimedia.org/wiki/File:Cristiano_Ronaldo.jpg"},
+  {name: "Rihanna", filename: "Rihanna_by_Rajasekharan_2019.jpg", wikifile: "https://commons.wikimedia.org/wiki/File:Rihanna_by_Rajasekharan_2019.jpg"},
+  {name: "Billie Eilish", filename: "Billie_Eilish_portrait.jpg", wikifile: "https://commons.wikimedia.org/wiki/File:Billie_Eilish_portrait.jpg"},
+  {name: "Neymar Jr.", filename: "Neymar_Jr_Portrait_%28149008871%29_%28cropped%29.jpeg", wikifile: "https://commons.wikimedia.org/wiki/File:Neymar_Jr_Portrait_%28149008871%29_%28cropped%29.jpeg"},
+  {name: "Dwayne Johnson", filename: "Dwayne_The_Rock_Johnson_2009_street_portrait.jpg", wikifile: "https://commons.wikimedia.org/wiki/File:Dwayne_The_Rock_Johnson_2009_street_portrait.jpg"},
+  {name: "BLACKPINK", filename: "Blackpink_Pink_Carpet_Event_4.jpg", wikifile: "https://commons.wikimedia.org/wiki/File:Blackpink_Pink_Carpet_Event_4.jpg"}
+];
+
+const gallery = document.getElementById('fanGallery');
+starterCards.forEach(card => {
+  const el = document.createElement('div');
+  el.className = 'fan-card';
+  el.innerHTML = `
+    <a class="card-link" href="${card.wikifile}" target="_blank" rel="noopener noreferrer">
+      <img src="assets/images/celebrities/${card.filename}" alt="${card.name}">
+    </a>
+    <h3>${card.name}</h3>
+    <p>Featured</p>
+    <div class="actions">
+      <button class="viewBtn" data-wiki="${card.wikifile}">View Card</button>
+      <button class="qrBtn" data-name="${card.name}">QR</button>
+    </div>
+  `;
+  gallery.appendChild(el);
+});
+</script>
+</body>
+</html>
